@@ -27,18 +27,22 @@ https://stackblitz.com/edit/ionic-calendar-demo?file=pages%2Fhome%2Fhome.html
 
 
 # Dependency
-Version 2.3.x depends on Ionic (>=7.0.0), Angular (>=17.0.0) and Swiper (>=11.0.0).   
-Version 2.2.x depends on Ionic (>=7.0.0), Angular (>=17.0.0) and Swiper (>=10.1.0).   
-Version 2.1.x depends on Ionic (>=7.0.0), Angular (>=16.0.0) and Swiper (>=10.1.0).   
-Version 2.0.x depends on Ionic (>=7.0.0), Angular (>=16.0.0) and Swiper (>=8.4.6, <9.0.0).   
-Version 1.0.x depends on Ionic (>=6.1.9), Angular (>=15.1.2) and Swiper (>=8.4.6, <9.0.0).   
-Version 0.6.x depends on Ionic (>=5.1.0) and Angular (>=9.1.0).    
-version 0.5.x depends on Ionic (>=4.0.0-rc.1), also supports Ionic 5.0.0.    
-version 0.4.x depends on Ionic (>=3.9.2).  
-version 0.3.x depends on Ionic (>=3.1.1).  
-version 0.2.9+ depends on Ionic (>=2.3.0).  
-version 0.2.x depends on Ionic 2.0.0-rc.5 (rc.5 has breaking change on the slide API) and  2.0.0 final version onwards.    
-version 0.1.x depends on Ionic 2.0.0-rc.1 ~ Ionic 2.0.0-rc.4    
+| Calendar Version | Ionic Version | Angular Version | Swiper Version |
+| ------------- | ------------- | ------------- | ------------- |
+| 2.5.x | >=8.0.0 | >=18.0.0 | >=11.0.0 |
+| 2.4.x | >=7.0.0 | >=17.0.0 | >=11.0.0 |
+| 2.3.x | >=7.0.0 | >=17.0.0 | >=11.0.0 |
+| 2.2.x | >=7.0.0 | >=17.0.0 | >=10.1.0 |
+| 2.1.x | >=7.0.0 | >=16.0.0 | >=10.1.0 |
+| 2.0.x | >=7.0.0 | >=16.0.0 | [8.4.6, 9.0.0) |
+| 1.0.x | >=6.1.9 | >=15.1.2 | [8.4.6, 9.0.0) |
+| 0.6.x | >=5.1.0 | >=9.1.0 | |
+| 0.5.x | >=4.0.0-rc.1 | | |
+| 0.4.x | >=3.9.2 | | |
+| 0.3.x | >=3.1.1 | | |
+| 0.2.9+ | >=2.3.0 | | |
+| 0.2.x | 2.0.0-rc.5 | | |
+| 0.1.x | [2.0.0-rc.1, 2.0.0-rc.4] | | |
 
 version 0.2-0.4 has below dependency:      
 intl 1.2.5, due to issue https://github.com/angular/angular/issues/3333    
