@@ -57,6 +57,8 @@ version 1.0.x is also published as Ionic6-Calendar package name. So could also r
 `npm install ionic6-calendar --save`  
 version 2.0.x is also published as Ionic7-Calendar package name. So could also run  
 `npm install ionic7-calendar --save`  
+version 2.5.x is also published as Ionic8-Calendar package name. So could also run  
+`npm install ionic8-calendar --save`  
 
 <font color=red>**NOTE: Starting from Version 1.0.x, the underlying implementaion is based on Swiper instead of IonSlides, so also needs to install Swiper dependency.**</font>  
 - Install swiper dependency  
