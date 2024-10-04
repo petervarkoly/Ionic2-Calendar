@@ -1,7 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import * as moment from 'moment'
+import 'moment-recur-ts'
 
-import {ICalendarComponent, IView, CalendarMode, QueryMode} from './calendar.interface';
+import { ICalendarComponent, IView, CalendarMode, QueryMode, IEvent, IOccurence } from './calendar.interface';
 
 @Injectable()
 export class CalendarService {
@@ -158,5 +160,46 @@ export class CalendarService {
 
     update() {
         this.slideUpdated.next();
+    }
+
+    getEventOccurences(event: IEvent, utcStartTime: number, utcEndTime: number): IOccurence[] {
+        let occurences: IOccurence[] = []
+        if( event.startTime > event.endTime) {
+            return occurences
+        }
+        if (!event.rruleFreq) {
+            let eventUTCStartTime: number
+            let eventUTCEndTime: number
+            if (event.allDay) {
+                eventUTCStartTime = event.startTime.getTime()
+                eventUTCEndTime = event.endTime.getTime()
+            } else {
+                    eventUTCStartTime = Date.UTC(event.startTime.getFullYear(), event.startTime.getMonth(), event.startTime.getDate())
+                    eventUTCEndTime = Date.UTC(event.endTime.getFullYear(), event.endTime.getMonth(), event.endTime.getDate() + 1)
+            }
+            if( eventUTCEndTime > utcStartTime && eventUTCStartTime < utcEndTime ) {
+                occurences.push({
+                    eventUTCStartTime: eventUTCStartTime,
+                    eventUTCEndTime: eventUTCEndTime
+                })
+            }
+            return occurences
+        }
+        if(event.rruleUntil && event.rruleUntil.getTime() < utcStartTime ){
+            return occurences;
+        }
+        let time = utcStartTime + 1
+        let oneDay = 86400000
+        let recurrence = moment(event.startTime.getDate()).recur().every(event.rruleInterval, event.rruleFreq)
+        while (time < utcEndTime + 1) {
+            if(recurrence.matches(time)) {
+                occurences.push({
+                    eventUTCStartTime: time,
+                    eventUTCEndTime: time + oneDay -2
+                })
+            }
+            time += oneDay
+        }
+        return occurences
     }
 }
