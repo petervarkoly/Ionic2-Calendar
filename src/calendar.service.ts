@@ -188,17 +188,13 @@ export class CalendarService {
         if(event.rruleUntil && event.rruleUntil.getTime() < utcStartTime ){
             return occurences;
         }
-        let time = utcStartTime + 1
-        let oneDay = 86400000
-        let recurrence = moment(event.startTime.getDate()).recur().every(event.rruleInterval, event.rruleFreq)
-        while (time < utcEndTime + 1) {
-            if(recurrence.matches(time)) {
-                occurences.push({
-                    eventUTCStartTime: time,
-                    eventUTCEndTime: time + oneDay -2
-                })
-            }
-            time += oneDay
+        for( let match of moment(event.startTime.getDate()).recur(utcStartTime,utcEndTime).every(event.rruleInterval, event.rruleFreq).all('L') ){
+            let matchDate = new Date(match)
+            let eventUTCStartTime = Date.UTC(matchDate.getFullYear(), matchDate.getMonth(), matchDate.getDate())
+            occurences.push({
+                eventUTCStartTime: eventUTCStartTime,
+                eventUTCEndTime: eventUTCStartTime + 86400000
+            })
         }
         return occurences
     }
