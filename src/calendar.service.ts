@@ -193,7 +193,7 @@ export class CalendarService {
             let eventUTCStartTime = Date.UTC(matchDate.getFullYear(), matchDate.getMonth(), matchDate.getDate())
             occurences.push({
                 eventUTCStartTime: eventUTCStartTime,
-                eventUTCEndTime: eventUTCStartTime + 86400000
+                eventUTCEndTime: eventUTCStartTime + 86399999
             })
         }
         return occurences
